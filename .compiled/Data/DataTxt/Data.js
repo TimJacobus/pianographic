@@ -20,19 +20,19 @@ var dailyInputData = convertTxt('./../DataTxt/dailyinput.txt');
 var musicData = convertTxt('./../DataTxt/music.txt');
 var repertoireData = convertTxt('./../DataTxt/repertoire.txt');
 var timeByDayData = convertTxt('./../DataTxt/timebyday.txt');
-console.log(monthBreakdownData);
 
 //The timeByMonth variable holds an object, which has 12 keys, one for each month. Each key stores an array, and this array stores an object with a totalTime key and timePerDay key.
 
 
-var timeByMonth = exports.timeByMonth = monthBreakdownData.reduce(function (month, line) {
+var timeByMonth = exports.timeByMonth = monthBreakdownData;
+/*.reduce((month, line) => {
   month[line[0]] = month[line[0]] || [];
   month[line[0]].push({
     totalTime: line[1],
     timePerDay: line[2]
-  });
+  })
   return month;
-}, {});
+}, {});*/
 
 var dailyInput = exports.dailyInput = dailyInputData.map(function (entry) {
   return [entry[0], entry[3]];

@@ -17,20 +17,19 @@ const dailyInputData = convertTxt('./../DataTxt/dailyinput.txt');
 const musicData = convertTxt('./../DataTxt/music.txt');
 const repertoireData = convertTxt('./../DataTxt/repertoire.txt');
 const timeByDayData = convertTxt('./../DataTxt/timebyday.txt');
-console.log(monthBreakdownData)
 
 //The timeByMonth variable holds an object, which has 12 keys, one for each month. Each key stores an array, and this array stores an object with a totalTime key and timePerDay key.
 
 
-export const timeByMonth = monthBreakdownData
-  .reduce((month, line) => {
+export const timeByMonth = monthBreakdownData;
+  /*.reduce((month, line) => {
     month[line[0]] = month[line[0]] || [];
     month[line[0]].push({
       totalTime: line[1],
       timePerDay: line[2]
     })
     return month;
-  }, {});
+  }, {});*/
 
 export const dailyInput = dailyInputData
   .map(entry => {
