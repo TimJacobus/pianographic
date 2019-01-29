@@ -1,6 +1,9 @@
 //                    ALL THE VARIABLES THAT HOLD OBJECTS CONVERTED FROM EXCEL WORKSHEETS
 
-const fs = require('fs');
+//THE PROBLEM HERE IS PROBABLY ABOUT AJAX OR SOMETHING
+
+//const fs = require('fs');
+import fs from 'fs';
 
 //The convertTxt function converts an Excel .txt import into an array.
 const convertTxt = (txt) => {
@@ -22,14 +25,6 @@ const timeByDayData = convertTxt('./../DataTxt/timebyday.txt');
 
 
 export const timeByMonth = monthBreakdownData;
-  /*.reduce((month, line) => {
-    month[line[0]] = month[line[0]] || [];
-    month[line[0]].push({
-      totalTime: line[1],
-      timePerDay: line[2]
-    })
-    return month;
-  }, {});*/
 
 export const dailyInput = dailyInputData
   .map(entry => {

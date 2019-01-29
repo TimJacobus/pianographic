@@ -3,18 +3,25 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//                    ALL THE VARIABLES THAT HOLD OBJECTS CONVERTED FROM EXCEL WORKSHEETS
+exports.timeByDay = exports.repertoire = exports.music = exports.dailyInput = exports.timeByMonth = undefined;
 
-var fs = require('fs');
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //The convertTxt function converts an Excel .txt import into an array.
 var convertTxt = function convertTxt(txt) {
-  return fs.readFileSync(txt, 'utf8').trim().replace(/\r/g, '').split('\n').map(function (line) {
+  return _fs2.default.readFileSync(txt, 'utf8').trim().replace(/\r/g, '').split('\n').map(function (line) {
     return line.split('\t');
   });
 };
 
 //Each constant stores a bare-bones array of data, which will be mutated at a later point.
+//                    ALL THE VARIABLES THAT HOLD OBJECTS CONVERTED FROM EXCEL WORKSHEETS
+
+//const fs = require('fs');
 var monthBreakdownData = convertTxt('./../DataTxt/monthbreakdown.txt');
 var dailyInputData = convertTxt('./../DataTxt/dailyinput.txt');
 var musicData = convertTxt('./../DataTxt/music.txt');
@@ -25,14 +32,6 @@ var timeByDayData = convertTxt('./../DataTxt/timebyday.txt');
 
 
 var timeByMonth = exports.timeByMonth = monthBreakdownData;
-/*.reduce((month, line) => {
-  month[line[0]] = month[line[0]] || [];
-  month[line[0]].push({
-    totalTime: line[1],
-    timePerDay: line[2]
-  })
-  return month;
-}, {});*/
 
 var dailyInput = exports.dailyInput = dailyInputData.map(function (entry) {
   return [entry[0], entry[3]];
