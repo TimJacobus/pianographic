@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
-import './App.css';
-import Composer from './Composer/Composer';
+import styles from './App.module.css';
+//import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
+import { Composers } from '../components/Composers/Composers';
+import { Cockpit } from '../components/Cockpit/Cockpit';
 //import {dailyInput} from './Data/DataTxt/Data';
 
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside Constructor');
+  }
+
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount')
+  }
+
+  shouldComponentUpdate( nextProps, nextState ) {
+    return nextState.composers !== this.state.composers ||
+      nextState.showComposers !== this.state.showComposers;
+  }
+  
   state = {
     composers: [
       { id: 'id1', name: 'Bela Bartok', era: '20th Century' },
@@ -45,52 +65,27 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
-
+    console.log('[App.js] Inside Render');
+    
     let composers = null;
 
     if (this.state.showComposers) {
       composers = (
-        <div>
-          {this.state.composers.map((composer, index) => {
-            return <Composer 
-              click={() => this.deleteComposerHandler(index)}
-              name={composer.name}
-              era={composer.era}
-              key={composer.id}
-              changed={(event) => this.composerChangeHandler(event, composer.id)} />
-          })}
-        </div> 
+        <Composers 
+          composers={this.state.composers}
+          clicked={this.deleteComposerHandler}
+          changed={this.composerChangeHandler} />
       );
-
-      style.backgroundColor = 'red';
-    }
-
-    let classes = [];
-    if (this.state.composers.length <= 2) {
-      classes.push('red');
-    }
-    if (this.state.composers.length <= 1) {
-      classes.push('bold');
     }
     
     return (
-        <div className="App">
-          <h1>Piano Graphic 2018</h1>
-          <p className={classes.join(' ')}>There are three composer cards.</p>
-          <button 
-            style={style}
-            onClick={this.toggleComposerHandler}>Toggle Composer Cards</button>
-
+        <div className={styles.App}>
+          <button onClick={() => {this.setState({showComposers: true})}}>Show Composers</button>
+          <Cockpit 
+            showComposers={this.state.showComposers}
+            composers={this.state.composers}
+            clicked={this.toggleComposerHandler}/>
           {composers}        
-
         </div>
 
     );

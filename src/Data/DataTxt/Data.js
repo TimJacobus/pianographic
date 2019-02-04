@@ -31,6 +31,8 @@ export const dailyInput = dailyInputData
     return [entry[0], entry[3]];
   });
 
+export const dailyInputFull = dailyInputData;
+
 export const music = musicData;
 
 export const repertoire = repertoireData;

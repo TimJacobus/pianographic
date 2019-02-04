@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.timeByDay = exports.repertoire = exports.music = exports.dailyInput = exports.timeByMonth = undefined;
+exports.timeByDay = exports.repertoire = exports.music = exports.dailyInputFull = exports.dailyInput = exports.timeByMonth = undefined;
 
 var _fs = require('fs');
 
@@ -21,6 +21,8 @@ var convertTxt = function convertTxt(txt) {
 //Each constant stores a bare-bones array of data, which will be mutated at a later point.
 //                    ALL THE VARIABLES THAT HOLD OBJECTS CONVERTED FROM EXCEL WORKSHEETS
 
+//THE PROBLEM HERE IS PROBABLY ABOUT AJAX OR SOMETHING
+
 //const fs = require('fs');
 var monthBreakdownData = convertTxt('./../DataTxt/monthbreakdown.txt');
 var dailyInputData = convertTxt('./../DataTxt/dailyinput.txt');
@@ -36,6 +38,8 @@ var timeByMonth = exports.timeByMonth = monthBreakdownData;
 var dailyInput = exports.dailyInput = dailyInputData.map(function (entry) {
   return [entry[0], entry[3]];
 });
+
+var dailyInputFull = exports.dailyInputFull = dailyInputData;
 
 var music = exports.music = musicData;
 
