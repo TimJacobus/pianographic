@@ -34,6 +34,7 @@ const timeSpentOn = (input, index, searchFor) => {
 
 //  The musicObject function creates an object, which basically only works if it gets the right input at the right places.
 //  It displays, for each composer, which books were studied, how long was spent, and how many pieces were learned.
+//  The data argument that this function and the next function receive, is the music txt file.
 
 const musicObjectCreator = (data) => {
   const listOfComposers = [...new Set(music.map(entry => entry[0]))];
@@ -68,6 +69,18 @@ const bookObjectCreator = (data) => {
   return musicObj;
 }
 
+ //This function takes three arguments, obj (either of the musicObject objects), index (the index of the key in the music object) and searchFor (what you want to display). 
+
+ const specificObjectCreator = (obj, index, searchFor) => {
+  const listOfKeys = [...new Set(music.map(entry => entry[index]))];
+  const dataCopy = Object.assign({}, obj);
+
+  for (let i = 0; i < listOfKeys.length; i++) {
+    dataCopy[listOfKeys[i]] = dataCopy[listOfKeys[i]][searchFor];
+  }
+  return dataCopy;
+}
+
 
 //    VARIABLES
 
@@ -97,24 +110,10 @@ export const timeOnSightReading = timeToMinutes(timeSpentOn(dailyInput, 0, 'Sigh
 export const musicObjectByComposer = musicObjectCreator(music);
 export const musicObjectByBook = bookObjectCreator(music);
 
-//  Create, from the general objects above, more specific objects. You want an object with key-value pairs, like composer-time, composer-pieces, books-pieces, books-time. I think those four.
-//  To create these objects, you can probably create a function which, with the right input arguments, can make these objects.
-
-
-
-console.log();
-
-//    music holds an array, each entry being another array. 
-//    [0] Holds the composer's name.
-//    [1] Holds the book, which needs manual refining in the Displayvars before it can be used.
-//    [2] Holds the time spent on that book.
-//    [3] Holds the number of pieces learned from that book.
-
-//    What to display, then? 
-
-
-//    Number of works by composer.
-//    Time per composer.
-//    Average time per piece/book.
-//    Average time per piece/composer.
+//  Four more specific objects. Each has a number of keys (composers / books) and each key has one value (a number, either pieces or minutes). 
+//  These objects will make data manipulation much easier.
+export const piecesPerComposer = specificObjectCreator(musicObjectByComposer, 0, 'pieces');
+export const timePerComposer = specificObjectCreator(musicObjectByComposer, 0, 'time');
+export const timePerBook = specificObjectCreator(musicObjectByBook, 1, 'time');
+export const piecesPerBook = specificObjectCreator(musicObjectByBook, 1, 'pieces');
 

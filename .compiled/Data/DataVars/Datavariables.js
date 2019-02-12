@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.musicObjectByBook = exports.musicObjectByComposer = exports.timeOnSightReading = exports.timeOnTechnique = exports.timeOnMusic = exports.timeOnRepertoire = exports.timeOnLessons = exports.timeByMonthCopy = exports.restMinutesInYear = exports.hoursInYear = exports.totalMinutesInYear = undefined;
+exports.piecesPerBook = exports.timePerBook = exports.timePerComposer = exports.piecesPerComposer = exports.musicObjectByBook = exports.musicObjectByComposer = exports.timeOnSightReading = exports.timeOnTechnique = exports.timeOnMusic = exports.timeOnRepertoire = exports.timeOnLessons = exports.timeByMonthCopy = exports.restMinutesInYear = exports.hoursInYear = exports.totalMinutesInYear = undefined;
 
 var _Data = require('../DataTxt/Data');
 
@@ -57,6 +57,7 @@ var timeSpentOn = function timeSpentOn(input, index, searchFor) {
 
 //  The musicObject function creates an object, which basically only works if it gets the right input at the right places.
 //  It displays, for each composer, which books were studied, how long was spent, and how many pieces were learned.
+//  The data argument that this function and the next function receive, is the music txt file.
 
 var musicObjectCreator = function musicObjectCreator(data) {
   var listOfComposers = [].concat(_toConsumableArray(new Set(_Data.music.map(function (entry) {
@@ -113,6 +114,20 @@ var bookObjectCreator = function bookObjectCreator(data) {
   return musicObj;
 };
 
+//This function takes three arguments, obj (either of the musicObject objects), index (the index of the key in the music object) and searchFor (what you want to display). 
+
+var specificObjectCreator = function specificObjectCreator(obj, index, searchFor) {
+  var listOfKeys = [].concat(_toConsumableArray(new Set(_Data.music.map(function (entry) {
+    return entry[index];
+  }))));
+  var dataCopy = Object.assign({}, obj);
+
+  for (var i = 0; i < listOfKeys.length; i++) {
+    dataCopy[listOfKeys[i]] = dataCopy[listOfKeys[i]][searchFor];
+  }
+  return dataCopy;
+};
+
 //    VARIABLES
 
 
@@ -140,23 +155,10 @@ var timeOnSightReading = exports.timeOnSightReading = timeToMinutes(timeSpentOn(
 var musicObjectByComposer = exports.musicObjectByComposer = musicObjectCreator(_Data.music);
 var musicObjectByBook = exports.musicObjectByBook = bookObjectCreator(_Data.music);
 
-//  Create, from the general objects above, more specific objects. You want an object with key-value pairs, like composer-time, composer-pieces, books-pieces, books-time. I think those four.
-//  To create these objects, you can probably create a function which, with the right input arguments, can make these objects.
-
-
-console.log();
-
-//    music holds an array, each entry being another array. 
-//    [0] Holds the composer's name.
-//    [1] Holds the book, which needs manual refining in the Displayvars before it can be used.
-//    [2] Holds the time spent on that book.
-//    [3] Holds the number of pieces learned from that book.
-
-//    What to display, then? 
-
-
-//    Number of works by composer.
-//    Time per composer.
-//    Average time per piece/book.
-//    Average time per piece/composer.
+//  Four more specific objects. Each has a number of keys (composers / books) and each key has one value (a number, either pieces or minutes). 
+//  These objects will make data manipulation much easier.
+var piecesPerComposer = exports.piecesPerComposer = specificObjectCreator(musicObjectByComposer, 0, 'pieces');
+var timePerComposer = exports.timePerComposer = specificObjectCreator(musicObjectByComposer, 0, 'time');
+var timePerBook = exports.timePerBook = specificObjectCreator(musicObjectByBook, 1, 'time');
+var piecesPerBook = exports.piecesPerBook = specificObjectCreator(musicObjectByBook, 1, 'pieces');
 //# sourceMappingURL=Datavariables.js.map
