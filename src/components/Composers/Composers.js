@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Composer } from './Composer/Composer';
+import Composer from './Composer/Composer';
 
 export class Composers extends Component {
   constructor(props) {
@@ -12,6 +12,10 @@ export class Composers extends Component {
     return nextProps.composers !== this.props.composers ||
       nextProps.changed !== this.props.changed ||
       nextProps.clicked !== this.props.clicked;
+  }
+
+  componentWillUnmount() {
+
   }
   
   render() {

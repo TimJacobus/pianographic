@@ -3,6 +3,8 @@ import styles from './App.module.css';
 //import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { Composers } from '../components/Composers/Composers';
 import { Cockpit } from '../components/Cockpit/Cockpit';
+import Aux from  '../hoc/WithClass';
+import exportWrap from '../hoc/exportWrap';
 //import {dailyInput} from './Data/DataTxt/Data';
 
 
@@ -10,14 +12,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     console.log('[App.js] Inside Constructor');
-  }
-
-  componentWillMount() {
-    console.log('[App.js] Inside componentWillMount');
-  }
-
-  componentDidMount() {
-    console.log('[App.js] Inside componentDidMount')
   }
 
   shouldComponentUpdate( nextProps, nextState ) {
@@ -31,7 +25,8 @@ class App extends Component {
       { id: 'id2', name: 'Wolfgang Amadeus Mozart', era: 'Classical'},
       { id: 'id3', name: 'Johann Sebastian Bach', era: 'Baroque' }
     ],
-    showComposers: false
+    showComposers: false,
+    changeCounter: 0
   }
   
   composerChangeHandler = ( event, id ) => {
@@ -48,7 +43,12 @@ class App extends Component {
     const composers = [...this.state.composers];
     composers[composerIndex] = composer;
 
-    this.setState( {composers: composers });
+    this.setState((prevState, props) => {
+      return {
+        composers: composers,
+        changeCounter: prevState.changeCounter + 1
+      };
+    }); 
   }
 
   deleteComposerHandler = (composerIndex) => {
@@ -79,17 +79,17 @@ class App extends Component {
     }
     
     return (
-        <div className={styles.App}>
-          <button onClick={() => {this.setState({showComposers: true})}}>Show Composers</button>
-          <Cockpit 
-            showComposers={this.state.showComposers}
-            composers={this.state.composers}
-            clicked={this.toggleComposerHandler}/>
-          {composers}        
-        </div>
+      <Aux>
+        <button onClick={() => {this.setState({showComposers: true})}}>Show Composers</button>
+        <Cockpit 
+          showComposers={this.state.showComposers}
+          composers={this.state.composers}
+          clicked={this.toggleComposerHandler}/>
+        {composers}        
+      </Aux>
 
     );
   }
 }
 
-export default App;
+export default exportWrap(App, styles.App);

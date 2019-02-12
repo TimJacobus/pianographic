@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Cockpit.module.css';
 
-
 export const Cockpit = (props) => {
-  
+
   let classes = [];
-  let btnClass = '';
+  let btnClass = styles.Button;
 
   if (props.showComposers) {
-    btnClass = styles.Red;
+    btnClass = [styles.Button, styles.Red].join(' ');
   }
 
   if (props.composers.length <= 2) {
@@ -19,12 +18,12 @@ export const Cockpit = (props) => {
   }
   
   return (
-    <div className={styles.Cockpit}>
+    <>
       <h1>Piano Graphic 2018</h1>
       <p className={classes.join(' ')}>There are three composer cards.</p>
       <button 
         className={btnClass}
         onClick={props.clicked}>Toggle Composer Cards</button>
-    </div>
+    </>
   );
 }

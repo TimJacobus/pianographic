@@ -4,32 +4,68 @@ import { timeByMonth, dailyInput, dailyInputFull, music, repertoire, timeByDay }
 
 //    FUNCTIONS
 
-//  timeToMinutes converts a time value of hh:mm:ss to minutes. It takes two arguments: an array and the index at which each time value is stored at each entry.
-//  This function is going to have trouble when there's an hour value with a single digit (h:mm:ss) or more than two digits (hhh:mm:ss). You should use regex.
-//  Write a regex that slices before the first :, and write a regex that slices after the first but before the second :. 
+//  The only purpose of timeToMinutes is to take an array of time values (h:mm:ss / hh:mm:ss / hhh:mm:ss) and converting it to a total amount of minutes. 
+//  If you want to know the total amount of time spent on a specific thing, you first create a filtered array with the timeSpentOn method, and then you use timeToMinutes to convert it to minutes.
+
+//  NOTE: in the restMinutes constant, I map every entry to entry * 1. I do this because each entry sits in its own array, and I want to remove that inner array. There must be a better way of doing that.
+
 const timeToMinutes = (timeArray, index) => {
-  return timeArray.map(entry => entry[index])
-  .map(time => time.slice(0,2))
-  .map(hours => parseInt(hours, 10))
-  .reduce((a, b) => a + b) * 60 +
-  timeArray.map(entry => entry[index])
-  .map(time => time.slice(3,5))
-  .map(minutes => parseInt(minutes, 10))
-  .reduce((a, b) => a + b);
+  const splitArr = timeArray.map(entry => entry[index])
+  .map(entry => entry.split(':'))
+  .map(entry => entry.map(index => parseInt(index, 10)));
+  
+  const hoursInMinutes = splitArr.map(time => time.slice(0,1))
+    .map(entry => entry * 60);
+  
+  const restMinutes = splitArr.map(time => time.slice(1,2))
+    .map(entry => entry * 1);        
+ 
+  return hoursInMinutes.reduce((a, b) => a + b) + restMinutes.reduce((a, b) => a + b);
 }
-
-//  An alternative timeToMinutes function which converts the time value to minutes, but doesn't remove other elements from the array.
-//  I need to access the entry at the provided index and convert it to to a value in minutes within a single return statement. 
-
 
 
 //  timeSpentOn takes an input file, an index at which the entry to search for is, and the term for which we want to search. It returns an array with all the entries that 
 //  match the searchFor argument at the given entry index.
 
 const timeSpentOn = (input, index, searchFor) => {
-  return input.filter(entry => {
-    return entry[index] === searchFor;
-  });
+  return input.filter(entry => entry[index] === searchFor);
+}
+
+
+//  The musicObject function creates an object, which basically only works if it gets the right input at the right places.
+//  It displays, for each composer, which books were studied, how long was spent, and how many pieces were learned.
+
+const musicObjectCreator = (data) => {
+  const listOfComposers = [...new Set(music.map(entry => entry[0]))];
+  const musicObj = {};
+  
+  for (let i = 0; i < listOfComposers.length; i++) {
+    const composerArr = timeSpentOn(data, 0, listOfComposers[i]); 
+
+    musicObj[listOfComposers[i]] = {
+      books: composerArr.map(entry => entry[1]),
+      time: timeToMinutes(composerArr, 2),
+      pieces: composerArr.map(entry => parseInt(entry[3])).reduce((a, b) => a + b) ? composerArr.map(entry => parseInt(entry[3])).reduce((a, b) => a + b) : 0
+    }
+  }
+  return musicObj;
+}
+
+//  This function creates an object which holds keys (book names) and values (objects with time spent & number of pieces). This object is used to calculate the average per book.
+
+const bookObjectCreator = (data) => {
+  const listOfBooks = [...new Set(music.map(entry => entry[1]))];
+  const musicObj = {};
+  
+  for (let i = 0; i < listOfBooks.length; i++) {
+    const booksArr = timeSpentOn(data, 1, listOfBooks[i]); 
+
+    musicObj[listOfBooks[i]] = {
+      time: timeToMinutes(booksArr, 2),
+      pieces: booksArr.map(entry => parseInt(entry[3])).reduce((a, b) => a + b) ? booksArr.map(entry => parseInt(entry[3])).reduce((a, b) => a + b) : 0
+    }
+  }
+  return musicObj;
 }
 
 
@@ -38,7 +74,6 @@ const timeSpentOn = (input, index, searchFor) => {
 
 //    TIMEBYMONTH VARIABLES
 
-//  The values these variables hold are pretty self-explanatory. 
 export const totalMinutesInYear = timeToMinutes(timeByMonth, 1);
 export const hoursInYear = Math.floor(totalMinutesInYear/60);
 export const restMinutesInYear = totalMinutesInYear - hoursInYear*60;
@@ -55,7 +90,19 @@ export const timeOnMusic = timeToMinutes(timeSpentOn(dailyInput, 0, 'Music'), 1)
 export const timeOnTechnique = timeToMinutes(timeSpentOn(dailyInput, 0, 'Technique'), 1);
 export const timeOnSightReading = timeToMinutes(timeSpentOn(dailyInput, 0, 'Sight Reading'), 1);
 
+
 //    MUSIC VARIABLES
+
+//  The two root objects which store a lot of information.
+export const musicObjectByComposer = musicObjectCreator(music);
+export const musicObjectByBook = bookObjectCreator(music);
+
+//  Create, from the general objects above, more specific objects. You want an object with key-value pairs, like composer-time, composer-pieces, books-pieces, books-time. I think those four.
+//  To create these objects, you can probably create a function which, with the right input arguments, can make these objects.
+
+
+
+console.log();
 
 //    music holds an array, each entry being another array. 
 //    [0] Holds the composer's name.
@@ -65,21 +112,6 @@ export const timeOnSightReading = timeToMinutes(timeSpentOn(dailyInput, 0, 'Sigh
 
 //    What to display, then? 
 
-//    Creating a new array with the time values converted to minutes, so I can actually make calculations with it.
-
-//    composerObject resorts the array into an object with key-value pairs.
-
-
-
-const composerObject = music.reduce((composer, line) => {
-  composer[line[0]] = composer[line[0]] || [];
-  composer[line[0]].push({
-    book: line[1],
-    number: line[2],
-    speed: line[3]
-  })
-  return composer;
-}, {})
 
 //    Number of works by composer.
 //    Time per composer.
