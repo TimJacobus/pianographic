@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './App.module.css';
 //import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { Composers } from '../components/Composers/Composers';
-import { Cockpit } from '../components/Cockpit/Cockpit';
+import Cockpit from '../components/Cockpit/Cockpit';
 import Aux from  '../hoc/WithClass';
 import exportWrap from '../hoc/exportWrap';
 //import {dailyInput} from './Data/DataTxt/Data';
