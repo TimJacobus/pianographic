@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/Data/DataVars/TimeByDayVars.js"],"names":[],"mappings":";;AAAA","file":"TimeByDayVars.js","sourcesContent":["import { timeByMonth, dailyInput, dailyInputFull, music, repertoire, timeByDay } from '../DataTxt/Data';\r\n\r\n\r\n\r\n//    FUNCTIONS\r\n\r\n\r\n\r\n\r\n//    VARIABLES\r\n\r\n"]}
