@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+
 import styles from './App.module.css';
+
 //import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { Composers } from '../components/Composers/Composers';
 import Cockpit from '../components/Cockpit/Cockpit';
 import Aux from  '../hoc/WithClass';
 import exportWrap from '../hoc/exportWrap';
+import AuthContext from '../context/auth-context';
 //import {dailyInput} from './Data/DataTxt/Data';
 
 
@@ -14,10 +17,10 @@ class App extends Component {
     console.log('[App.js] Inside Constructor');
   }
 
-  shouldComponentUpdate( nextProps, nextState ) {
-    return nextState.composers !== this.state.composers ||
-      nextState.showComposers !== this.state.showComposers;
-  }
+  // shouldComponentUpdate( nextProps, nextState ) {
+  //   return nextState.composers !== this.state.composers ||
+  //     nextState.showComposers !== this.state.showComposers;
+  // }
   
   state = {
     composers: [
@@ -26,7 +29,8 @@ class App extends Component {
       { id: 'id3', name: 'Johann Sebastian Bach', era: 'Baroque' }
     ],
     showComposers: false,
-    changeCounter: 0
+    changeCounter: 0,
+    authenticated: false
   }
   
   composerChangeHandler = ( event, id ) => {
@@ -64,6 +68,10 @@ class App extends Component {
     });
   }
 
+  loginHandler = () => {
+    this.setState({authenticated: true});
+  }
+
   render() {
     console.log('[App.js] Inside Render');
     
@@ -81,11 +89,17 @@ class App extends Component {
     return (
       <Aux>
         <button onClick={() => {this.setState({showComposers: true})}}>Show Composers</button>
-        <Cockpit 
-          showComposers={this.state.showComposers}
-          composers={this.state.composers}
-          clicked={this.toggleComposerHandler}/>
-        {composers}        
+        <AuthContext.Provider 
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler
+          }} >
+          <Cockpit 
+            showComposers={this.state.showComposers}
+            composers={this.state.composers}
+            clicked={this.toggleComposerHandler}/>
+          {composers}       
+        </AuthContext.Provider> 
       </Aux>
 
     );

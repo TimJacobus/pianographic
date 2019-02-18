@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import styles from './Cockpit.module.css';
+import AuthContext from '../../context/auth-context';
 
 const Cockpit = (props) => {
   const toggleBtnRef = useRef(null);
+  const authContext = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   toggleBtnRef.current.click();
-  // }, []);
+  useEffect(() => {
+    toggleBtnRef.current.click();
+  }, []);
 
   let classes = [];
   let btnClass = styles.Button;
@@ -27,9 +29,15 @@ const Cockpit = (props) => {
       <h1>Piano Graphic 2018</h1>
       <p className={classes.join(' ')}>There are three composer cards.</p>
       <button 
-        // ref={toggleBtnRef}
+        ref={toggleBtnRef}
         className={btnClass}
         onClick={props.clicked}>Toggle Composer Cards</button>
+
+      <button 
+        className={btnClass} 
+        onClick={authContext.login}>Log In</button>
+
+      
     </>
   );
 }

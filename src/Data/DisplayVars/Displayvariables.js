@@ -9,3 +9,6 @@ const totalTimeYear = `${dataVars.hoursInYear}:${dataVars.restMinutesInYear}`;
 //The average is taken over the total amount of days in that time period.
 let averagePerDay = `${Math.floor(dataVars.minutesPractised/(365*60))}:${Math.round((dataVars.minutesPractised/(365*60)-(Math.floor(dataVars.minutesPractised/(365*60))))*60)}`;
 let averagePerMonth = `${Math.floor((dataVars.minutesPractised/12)/60)}:${Math.round((((dataVars.minutesPractised/12)/60)-(Math.floor((dataVars.minutesPractised/12)/60)))*60)}`;
+
+
+
