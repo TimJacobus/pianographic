@@ -99,6 +99,7 @@ const dateRepObjCreator = (index, year) => {
   for (let i = 0; i < dateKeys.length; i++) {
     for (let j = 0; j < repCopy.length; j++) {
       if (repCopy[j][index] !== undefined && repCopy[j][index] !== '') {
+        // eslint-disable-next-line eqeqeq
         returnObj[dateObj[i+1]] = repCopy.filter(entry => entry[index] == dateKeys[i] && entry[6] == year).map(entry => [entry[0].split(',')[0].substring(1), entry[1], entry[2], entry[3]]) 
       }      
     }
@@ -141,7 +142,7 @@ export const repPiecesByComposerObj = repertoireObjectCreator();
 export const numberOfPiecesPerComposer = repPiecesByComposer(repPiecesByComposerObj)
 
 //  The upper two variables store keysvalue pairs. The keys are months, the values are arrays with all the entries of everything that was started / finished during that month.
-//  The lower two variable store key-value pairs. The keys are months, the values are the number of pieces started or finished during thah month.
+//  The lower two variable store key-value pairs. The keys are months, the values are the number of pieces started or finished during that month.
 export const startedInMonth = dateRepObjCreator(4, 2018);
 export const finishedInMonth = dateRepObjCreator(5, 2018);
 

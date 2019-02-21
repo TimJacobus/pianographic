@@ -47,7 +47,7 @@ class App extends Component {
     const composers = [...this.state.composers];
     composers[composerIndex] = composer;
 
-    this.setState((prevState, props) => {
+    this.setState((prevState) => {
       return {
         composers: composers,
         changeCounter: prevState.changeCounter + 1

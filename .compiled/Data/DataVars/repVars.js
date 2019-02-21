@@ -127,6 +127,7 @@ var dateRepObjCreator = function dateRepObjCreator(index, year) {
   var _loop = function _loop(i) {
     for (var j = 0; j < repCopy.length; j++) {
       if (repCopy[j][index] !== undefined && repCopy[j][index] !== '') {
+        // eslint-disable-next-line eqeqeq
         returnObj[dateObj[i + 1]] = repCopy.filter(function (entry) {
           return entry[index] == dateKeys[i] && entry[6] == year;
         }).map(function (entry) {
@@ -179,7 +180,7 @@ var repPiecesByComposerObj = exports.repPiecesByComposerObj = repertoireObjectCr
 var numberOfPiecesPerComposer = exports.numberOfPiecesPerComposer = repPiecesByComposer(repPiecesByComposerObj);
 
 //  The upper two variables store keysvalue pairs. The keys are months, the values are arrays with all the entries of everything that was started / finished during that month.
-//  The lower two variable store key-value pairs. The keys are months, the values are the number of pieces started or finished during thah month.
+//  The lower two variable store key-value pairs. The keys are months, the values are the number of pieces started or finished during that month.
 var startedInMonth = exports.startedInMonth = dateRepObjCreator(4, 2018);
 var finishedInMonth = exports.finishedInMonth = dateRepObjCreator(5, 2018);
 
