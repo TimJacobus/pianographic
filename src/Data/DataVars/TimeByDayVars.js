@@ -36,7 +36,13 @@ export const minutesToTimeConverter = (data) => {
       totalMinutes--;
     }
   }
-  return `${hours}:${minutes}:00`
+  return hours === 1 && minutes !== 1 
+    ? `${hours} hour and ${minutes} minutes`
+    : hours === 1 && minutes === 1
+      ? `${hours} hour and ${minutes} minute`
+      : minutes === 1
+       ? `${hours} hours and ${minutes} minute`
+       : `${hours} hours and ${minutes} minutes`;
 }
 
 //  This function returns an object with keys (months) and values (time spent per month).
@@ -94,11 +100,11 @@ const dailyPracMonth = () => {
   for (let i = 0; i < dateKeys.length; i++) {
     const monthObj = {
       0: month.filter(entry => entry[0] === dateKeys[i] && entry[1] === 0).length,
-      1: month.filter(entry => entry[0] === dateKeys[i] && entry[1] > 0 && entry[1] <= 60).length,
-      2: month.filter(entry => entry[0] === dateKeys[i] && entry[1] > 60 && entry[1] <= 120).length,
-      3: month.filter(entry => entry[0] === dateKeys[i] && entry[1] > 120 && entry[1] <= 180).length,
-      4: month.filter(entry => entry[0] === dateKeys[i] && entry[1] > 180 && entry[1] <= 240).length,
-      5: month.filter(entry => entry[0] === dateKeys[i] && entry[1] > 240 && entry[1] <= 300).length
+      1: month.filter(entry => entry[0] === dateKeys[i] && (entry[1] > 0 && entry[1] <= 60)).length,
+      2: month.filter(entry => entry[0] === dateKeys[i] && (entry[1] > 60 && entry[1] <= 120)).length,
+      3: month.filter(entry => entry[0] === dateKeys[i] && (entry[1] > 120 && entry[1] <= 180)).length,
+      4: month.filter(entry => entry[0] === dateKeys[i] && (entry[1] > 180 && entry[1] <= 240)).length,
+      5: month.filter(entry => entry[0] === dateKeys[i] && (entry[1] > 240 && entry[1] <= 300)).length
     }
     returnObj[dateObj[i+1]] = monthObj;
   }

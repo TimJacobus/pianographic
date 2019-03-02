@@ -28,4 +28,3 @@ export const totalMinutesInYear = timeToMinutes(timeByMonth, 1);
 export const hoursInYear = Math.floor(totalMinutesInYear/60);
 export const restMinutesInYear = totalMinutesInYear - hoursInYear*60;
 export const timeByMonthCopy = [...timeByMonth];     //This array can be used to make a graph or something, probably.
-

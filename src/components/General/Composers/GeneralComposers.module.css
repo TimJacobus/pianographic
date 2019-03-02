@@ -1,0 +1,15 @@
+.Composers {
+  width: 100%;
+}
+
+.ComposerCards {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Composers h1 {
+  background-color: RGBA(255, 186, 170, 0.65);
+  margin-bottom: 0;
+}

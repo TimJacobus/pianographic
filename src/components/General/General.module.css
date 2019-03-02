@@ -1,0 +1,10 @@
+.General {
+  background-color: RGBA(255, 186, 170, 0.35);
+  display: flex;
+  flex-direction: column;
+
+}
+
+.InfoBlock {
+  display: inline-block;
+}

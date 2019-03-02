@@ -1,25 +1,14 @@
 //                    ALL THE VARIABLES THAT HOLD OBJECTS CONVERTED FROM EXCEL WORKSHEETS
 
-//THE PROBLEM HERE IS PROBABLY ABOUT AJAX OR SOMETHING
+//  I FIXED IT, I FINALLY FUCKING FIXED IT. WHOOHOOOOO.
 
-//const fs = require('fs');
-import fs from 'fs';
 
-//The convertTxt function converts an Excel .txt import into an array.
-const convertTxt = (txt) => {
-  return fs.readFileSync(txt, 'utf8')
-    .trim()
-    .replace(/\r/g, '')
-    .split('\n')
-    .map(line => line.split('\t'));
-};
+import monthBreakdownData from './monthbreakdown.json';
+import dailyInputData from './dailyinput.json';
+import musicData from './music.json';
+import repertoireData from './repertoire.json';
+import timeByDayData from './timebyday.json';
 
-//Each constant stores a bare-bones array of data, which will be mutated at a later point.
-const monthBreakdownData = convertTxt('./../DataTxt/monthbreakdown.txt');
-const dailyInputData = convertTxt('./../DataTxt/dailyinput.txt');
-const musicData = convertTxt('./../DataTxt/music.txt');
-const repertoireData = convertTxt('./../DataTxt/repertoire.txt');
-const timeByDayData = convertTxt('./../DataTxt/timebyday.txt');
 
 //The timeByMonth variable holds an object, which has 12 keys, one for each month. Each key stores an array, and this array stores an object with a totalTime key and timePerDay key.
 

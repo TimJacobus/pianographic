@@ -1,0 +1,33 @@
+.Outer {
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+  height: 218px;
+  padding: 0 0 26px 0;
+  margin: 0;
+}
+
+.Outer h2 {
+  background-color: RGBA(255, 186, 170, 0.3);
+  margin: 0 3px 10px 3px;
+}
+
+.Box {
+  display: flex;
+  width: 100%;
+}
+
+.InnerLeft {
+  width: 200px;
+  text-align: center;
+}
+
+.InnerRight {
+  padding-top: 0;
+  font-weight: 500;
+  text-align: left;
+}
+
+.InnerRight p {
+  padding-left: 10px;
+}

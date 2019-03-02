@@ -55,7 +55,6 @@ const averageNumberOfDays = (...arr) => {
 
 //  This function creates an object. Its keys are the composers, and each key has an array as a value. Each entry of this array is another array containing a work that's been learned.
 //  The keys are set to just the last name of the composer. If I ever want access to the full name of a composer, I'll just create a separate object or array.
-//  The .substring(1) method is used to remove the double quotes, looks a bit better.
 
 const repertoireObjectCreator = () => {
   const listOfComposers = [...new Set(repertoire.map(entry => entry[0]))];
@@ -64,7 +63,7 @@ const repertoireObjectCreator = () => {
   for (let i = 0; i < listOfComposers.length; i++) {
     const composerArr = timeSpentOn(repertoire, 0, listOfComposers[i]); 
 
-    repObj[listOfComposers[i].split(',')[0].substring(1)] = 
+    repObj[listOfComposers[i].split(',')[0]] = 
       composerArr.map(entry => entry.slice(1, 4))
   };
   return repObj;
@@ -83,24 +82,24 @@ const repPiecesByComposer = (obj) => {
 }
 
 //  This function creates an object with keys (months) and values (an array which stores a arary entries for each piece learned).
-//  repCopy maps each entry. If it has a value at [5], it targets entry[index] and splits the year from it. If [5] has no value, [4] is directly targeted.
-//  Targeting [4] directly is not ideal, but I can't target [index] without it throwing an error, because [5] of the final entry is undefined. I get away with it, because if [5] has no value, there's no reason to ever
-//  target another index than [4].
+//  repCopy maps each entry. repCopy maps a new array of each piece that's learned. [4] holds the month in which it was started, [5] holds the month in which it was finished, and [6] holds the year 
+//  from the date stored at index. This year will be used to check whether the piece was started/finished in the year we passed as an argument.
 const dateRepObjCreator = (index, year) => {
   const dateObj = {
     1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August', 9: 'September', 10: 'October', 11: 'November', 12: 'December'
   }
   const dateKeys = Object.keys(dateObj);
   let returnObj = {};
-  const repCopy = [...repertoire].map(entry => entry[5] !== undefined && entry[5] !== ''  
+
+  const repCopy = [...repertoire].map(entry => entry[5] !== undefined
     ? [entry[0], entry[1], entry[2], entry[3], parseInt(entry[4].split('-').slice(1, 2)), parseInt(entry[5].split('-').slice(1, 2)), parseInt(entry[index].split('-').slice(0, 1))]
-    : [entry[0], entry[1], entry[2], entry[3], parseInt(entry[4].split('-').slice(1, 2)), '', parseInt(entry[4].split('-').slice(0, 1))]);  
+    : [entry[0], entry[1], entry[2], entry[3], parseInt(entry[4].split('-').slice(1, 2)), null, parseInt(entry[index].split('-').slice(0, 1))]);  
 
   for (let i = 0; i < dateKeys.length; i++) {
     for (let j = 0; j < repCopy.length; j++) {
-      if (repCopy[j][index] !== undefined && repCopy[j][index] !== '') {
+      if (repCopy[j][index] !== undefined) {
         // eslint-disable-next-line eqeqeq
-        returnObj[dateObj[i+1]] = repCopy.filter(entry => entry[index] == dateKeys[i] && entry[6] == year).map(entry => [entry[0].split(',')[0].substring(1), entry[1], entry[2], entry[3]]) 
+        returnObj[dateObj[i+1]] = repCopy.filter(entry => entry[index] == dateKeys[i] && entry[6] == year).map(entry => [entry[0].split(',')[0], entry[1], entry[2], entry[3]]) 
       }      
     }
   }
@@ -127,6 +126,7 @@ export const started2017Finished2018 = learnedInYear(2017, 2018);
 export const started2018Finished2018 = learnedInYear(2018, 2018);
 export const started2017InProgress = learnedInYear(2017);
 export const started2018InProgress = learnedInYear(2018);
+export const totalStartedIn2018 = started2018Finished2018.length + started2018InProgress.length;
 
 //  These two variables each store an array similar to the arrays above, but it excludes any dates and, at the [4] entry, includes the number of days it took to learn each piece.
 //  Note that this calculation starts only after initially learning the piece. This is important for the eventual display of data. 
