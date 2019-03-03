@@ -1,0 +1,5 @@
+.Time {
+  background-color: RGBA(229, 245, 163, 0.35);
+  display: flex;
+  flex-direction: column;
+}

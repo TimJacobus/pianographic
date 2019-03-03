@@ -6,10 +6,12 @@
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .Composers h1 {
   background-color: RGBA(255, 186, 170, 0.65);
-  margin-bottom: 0;
+  padding: 10px 0;
+  margin: 10px 11px ;
+  border-radius: 15px;
 }

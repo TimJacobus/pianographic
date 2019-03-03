@@ -1,4 +1,7 @@
 .Header {
   font-size: 1.25rem;
   background-color: RGB(121, 134, 172, .25);
+  border-top: 25px solid RGB(121, 134, 172, .00);
+  border-left: 25px solid RGB(121, 134, 172, .00);
+  border-right: 25px solid RGB(121, 134, 172, .00);
 }

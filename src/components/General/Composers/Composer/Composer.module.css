@@ -1,20 +1,26 @@
 .Outer {
   display: flex;
   flex-direction: column;
-  min-width: 50%;
-  height: 218px;
+  min-width: 48%;
+  height: 240px;
   padding: 0 0 26px 0;
   margin: 0;
 }
 
 .Outer h2 {
   background-color: RGBA(255, 186, 170, 0.3);
-  margin: 0 3px 10px 3px;
+  margin: 8px 0 10px 0;
+  padding: 4px 0;
+  border-radius: 8px;
 }
 
 .Box {
   display: flex;
   width: 100%;
+}
+
+.Box img {
+  border-radius: 100px;
 }
 
 .InnerLeft {
@@ -24,7 +30,8 @@
 
 .InnerRight {
   padding-top: 0;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.06rem;
   text-align: left;
 }
 

@@ -17,6 +17,6 @@ export const timeSpentOn = (input, index, searchFor) => {
 //  used to display the actual data.
 export const timeOnLessons = timeToMinutes(timeSpentOn(dailyInput, 0, 'Piano Lesson'), 1);
 export const timeOnRepertoire = timeToMinutes(timeSpentOn(dailyInputFull, 1, 'Repertoire'), 3);
-export const timeOnMusic = timeToMinutes(timeSpentOn(dailyInput, 0, 'Music'), 1);
+export const timeOnMusic = timeToMinutes(timeSpentOn(dailyInput, 0, 'Music'), 1)-timeOnRepertoire;
 export const timeOnTechnique = timeToMinutes(timeSpentOn(dailyInput, 0, 'Technique'), 1);
 export const timeOnSightReading = timeToMinutes(timeSpentOn(dailyInput, 0, 'Sight Reading'), 1);

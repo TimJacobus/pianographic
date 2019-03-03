@@ -1,12 +1,14 @@
 import React from 'react';
 
+import classes from './GeneralTime.module.css';
+
 import { totalMinutesInYear } from '../../../Data/DataVars/MonthVars';
 import { minutesToTimeConverter } from '../../../Data/DataVars/TimeByDayVars';
 import { totalAmountOfPieces, totalAmountOfBooks, totalAmountOfComposers } from '../../../Data/DataVars/MusicVars';
 import { totalStartedIn2018 } from '../../../Data/DataVars/RepVars';
 
 const generalTime = () => (
-  <div>
+  <div className={classes.Time}>
     <h1>Total time practised: {minutesToTimeConverter(totalMinutesInYear)}.</h1>
     <h2>A daily average of {minutesToTimeConverter(totalMinutesInYear / 365) }.</h2>
     <h2>{totalAmountOfPieces} pieces learned by {totalAmountOfComposers} composers from {totalAmountOfBooks} books.</h2>

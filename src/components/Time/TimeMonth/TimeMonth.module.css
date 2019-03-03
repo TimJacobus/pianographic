@@ -1,0 +1,13 @@
+.TimeMonth h1 {
+  border-radius: 15px;
+  margin: 0;
+  padding: 10px 0;
+  background-color: RGBA(229, 245, 163, 0.55);
+}
+
+.TimeMonthContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+

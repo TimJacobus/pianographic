@@ -1,0 +1,30 @@
+
+.TotalTime h1 {
+  margin: 20px 11px 10px 11px;
+  padding: 10px 0;
+  background-color: RGBA(229, 245, 163, 0.35);
+  border-radius: 15px;
+}
+
+.YearBreakdown {
+  color: RGB(22, 39, 86, .85);
+}
+
+.YearBreakdown h2 {
+  padding-top: 10px;
+  color: RGB(22, 39, 86);
+}
+
+.YearSpecification {
+  padding-bottom: 15px;
+}
+
+
+.YearSpecification h3 {
+  padding: 10px;
+  margin: 0;
+}
+
+.YearSpecification span {
+  color: RGB(128, 41, 21, .85);
+}

@@ -31,7 +31,7 @@ export const minutesToTimeConverter = (data) => {
       hours++;
       totalMinutes = totalMinutes - 60;
     }
-    if (totalMinutes < 60) {
+    if (totalMinutes < 60 && totalMinutes > 0) {
       minutes++;
       totalMinutes--;
     }
@@ -42,7 +42,9 @@ export const minutesToTimeConverter = (data) => {
       ? `${hours} hour and ${minutes} minute`
       : minutes === 1
        ? `${hours} hours and ${minutes} minute`
-       : `${hours} hours and ${minutes} minutes`;
+       : minutes === 0
+        ? `${hours} hours`
+        : `${hours} hours and ${minutes} minutes`;
 }
 
 //  This function returns an object with keys (months) and values (time spent per month).

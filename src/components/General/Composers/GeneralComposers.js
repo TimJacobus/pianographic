@@ -6,7 +6,7 @@ import Composer from './Composer/Composer';
 
 const composers = () => (
   <div className={classes.Composers}>
-    <h1>Top Composers of the Year</h1>
+    <h1>Favourite Composers of the Year</h1>
     <div className={classes.ComposerCards}>
       <Composer 
         composer="Béla Bartók" 
