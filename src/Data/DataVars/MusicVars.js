@@ -70,3 +70,5 @@ export const piecesPerBook = specificObjectCreator(musicObjectByBook, 1, 'pieces
 export const totalAmountOfPieces = Object.keys(piecesPerComposer).map(key => piecesPerComposer[key]).reduce((a, b) => a + b); 
 export const totalAmountOfBooks = Object.keys(timePerBook).length-1;
 export const totalAmountOfComposers = Object.keys(piecesPerComposer).length-1;
+
+console.log(piecesPerBook)

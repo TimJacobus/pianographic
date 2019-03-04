@@ -5,7 +5,7 @@ import classes from './InfoBody.module.css';
 import Header from '../../components/Header/Header';
 import General from '../../components/General/General';
 import Time from '../../components/Time/Time';
-import Composers from '../../components/Composers/Composers';
+import Books from '../../components/Books/Books';
 import Repertoire from '../../components/Repertoire/Repertoire';
 
 
@@ -14,7 +14,7 @@ const infoBody = () => (
     <Header />
     <General />
     <Time />
-    <Composers />
+    <Books />
     <Repertoire />
   </div>
 )

@@ -1,0 +1,23 @@
+.Books {
+  background-color: RGBA(255, 186, 170, 0.35);
+}
+
+.Books h1 {
+  border-radius: 15px;
+  margin: 25px 11px 35px 11px;
+  padding: 10px 0;
+  background-color: RGBA(255, 186, 170, 0.65);
+}
+
+.BookCategory {
+  background-color: RGBA(255, 186, 170, 0.35);
+  margin: 35px 13px 35px 13px;
+  padding: 1px 0;
+  border-radius: 15px;
+}
+
+.BookContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

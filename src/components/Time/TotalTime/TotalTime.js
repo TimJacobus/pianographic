@@ -10,10 +10,10 @@ const totalTime = () => {
     <div className={classes.TotalTime}>
       <h1>Breaking Down Total Time Practised</h1>
       <div className={classes.YearBreakdown}>
-        <h2>Practised for {minutesToTimeConverter(totalMinutesInYear)} in 2018.</h2>
+        <h2>Practised for {minutesToTimeConverter(totalMinutesInYear+2)} in 2018.</h2>
         <div className={classes.YearSpecification}>
-          <h3>{minutesToTimeConverter(timeOnMusic)} spent on learning <span>new music</span>.</h3>
-          <h3>{minutesToTimeConverter(timeOnRepertoire)} spent on building a <span>repertoire</span>.</h3>
+          <h3>{minutesToTimeConverter(timeOnMusic)} spent learning <span>new music</span>.</h3>
+          <h3>{minutesToTimeConverter(timeOnRepertoire)} spent building a <span>repertoire</span>.</h3>
           <h3>{minutesToTimeConverter(timeOnLessons)} spent at just as many <span>lessons</span>.</h3>
           <h3>{minutesToTimeConverter(timeOnTechnique)} spent on <span>technique</span>.</h3>
           <h3>{minutesToTimeConverter(timeOnSightReading)} spent on <span>sight-reading</span>.</h3>

@@ -24,7 +24,7 @@ const composer = (props) => {
       <h2>{props.composer}</h2>
       <div className={classes.Box}>
         <div className={classes.InnerLeft}>    
-          <img src={props.imgLink} alt={imgAlt} />
+          <img src={require(`../../../../assets/Composers/${props.lastName}.jpg`)} alt={imgAlt} />
         </div>
         <div className={classes.InnerRight}>
           <p>Spent {minutesToTimeConverter(timePerComposer[props.lastName])} learning new material.</p>

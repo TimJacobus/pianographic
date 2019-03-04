@@ -1,0 +1,46 @@
+.OuterDiv {
+  min-width: 47%;
+  max-width: 49%;
+  display: flex;
+  flex-direction: column;
+}
+
+.OuterDiv h3 {
+  background-color: RGBA(255, 186, 170, 0.2);
+  margin: 8px 0 10px 0;
+  padding: 4px 0;
+  border-radius: 8px;
+}
+
+.InnerDiv {
+  display: flex;
+  margin: 5px 11px;
+  padding: 10px 11px;
+  justify-content: space-around
+}
+
+.BookContainer img {
+  height: 280px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.RightBlock {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.RightBlock p {
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.06rem;
+  margin-bottom: 5px;
+}
+
+.ComposerContainer img {
+  height: 140px;
+  width: 140px;
+  border-radius: 100px;
+}
+

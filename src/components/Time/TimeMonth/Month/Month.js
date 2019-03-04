@@ -5,8 +5,6 @@ import classes from './Month.module.css';
 import { totalTimePerMonth, averageTimePerMonth, minutesToTimeConverter, months0Prac } from '../../../../Data/DataVars/TimeByDayVars';
 import { amountStartedInMonth, amountFinishedInMonth } from '../../../../Data/DataVars/RepVars';
 
-console.log(months0Prac)
-
 const month = (props) => {
   let zeroPrac = <p>Missed {months0Prac[props.month]} days of practice.</p>
 
@@ -30,7 +28,7 @@ const month = (props) => {
     <div className={classes.Outer}>
       <h2>{props.month}</h2>
       <div className={classes.MonthContainer}>
-        <img src={props.imgLink}></img>
+        <img src={require(`../../../../assets/Seasons/${props.month}.png`)} alt={props.month} />
         <div className={classes.InfoContainer}>
           <p>Time practised: {minutesToTimeConverter(totalTimePerMonth[props.month])}.</p>
           <p>Daily average: {minutesToTimeConverter(averageTimePerMonth[props.month])}.</p>
