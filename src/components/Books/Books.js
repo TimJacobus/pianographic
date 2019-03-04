@@ -13,8 +13,8 @@ const books = () => {
       <h1>Books Breakdown</h1>
       <h2>Average time to learn a piece of music: {minutesToTimeConverter((timeOnMusic / totalAmountOfPieces))}.</h2>
       <br/>
-      <h3>Listed below is the time spent on initially learning every piece from the book.</h3>
-      <h3>Further study of pieces to convert them to repertoire is not included here.</h3>
+      <h3>Listed below is the time spent on initially learning from a book.</h3>
+      <h3>Further study of pieces to convert them to repertoire is not included.</h3>
       <div>
         <div className={classes.BookCategory}>
           <h2>Books With Up To 1 Hour / Piece Average</h2>
@@ -68,9 +68,11 @@ const books = () => {
         <div className={classes.BookContainer}>
           <Book composerDir='Attwood' bookDir='Attwood' objKey='Attwood' composer='Thomas Attwood' book='Four Sonatinas'/>
           <Book composerDir='Satie' bookDir='SatieChildren' objKey='Satie for Children' composer='Erik Satie' book="Nine Children's Pieces"/>
+          <Book composerDir='Clementi' bookDir='Clementi36' objKey='Clementi Op. 36' composer='Muzio Clementi' book='Six Sonatinas'/> 
           <Book composerDir='Burgmuller' bookDir='Burgmuller100' objKey='Burgmuller Op. 100' composer='Friedrich Burgmüller' book='25 Progressive Studies'/>
           <Book composerDir='Bloch' bookDir='BlochEnfantines' objKey='Bloch Enfantines' composer='Ernest Bloch' book='Enfantines'/>
           <Book composerDir='Bartok' bookDir='Mikrokosmos2' objKey='Mikrokosmos Book 2' composer='Béla Bartók' book='Mikrokosmos Book 2'/>
+          <Book composerDir='Purcell' bookDir='BaroqueKeyboard1' objKey='Baroque Keyboard Pieces book 1' composer='Henry Purcell' book='Baroque Keyboard Pieces Book 1'/> 
           <Book composerDir='Bach' bookDir='BachAnnaMagdalena' objKey='Bach Anna Magdalena' composer='Johann Sebastian Bach' book='Notebook for Anna Magdalena Bach'/>
           <Book composerDir='Gurlitt' bookDir='Gurlitt101' objKey='Gurlitt 101' composer='Cornelius Gurlitt' book='Albumleaves for the Young'/>
         </div>
