@@ -19,9 +19,9 @@ const book = (props) => {
           <div className={classes.ComposerContainer}>
             <img src={require(`../../../assets/Composers/${props.composerDir}.jpg`)} alt={composerDirAlt}/>
           </div>
-          <p>Total time spent: {minutesToTimeConverter(timePerBook[props.objKey])}</p>
-          <p>Total number of pieces learned: {piecesPerBook[props.objKey]}</p>
-          <p>Average time per piece: {minutesToTimeConverter((timePerBook[props.objKey]/piecesPerBook[props.objKey]))}</p>
+          <p>Total time spent: {minutesToTimeConverter(timePerBook[props.bookDir])}</p>
+          <p>Total number of pieces learned: {piecesPerBook[props.bookDir]}</p>
+          <p>Average time per piece: {minutesToTimeConverter((timePerBook[props.bookDir]/piecesPerBook[props.bookDir]))}</p>
         </div>
       </div>
     </div>

@@ -42,5 +42,6 @@
   height: 140px;
   width: 140px;
   border-radius: 100px;
+  border: 5px solid RGBA(255, 186, 170, 0.25);
 }
 

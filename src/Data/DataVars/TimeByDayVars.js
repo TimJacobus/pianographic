@@ -6,7 +6,7 @@ import { timeByDay } from '../DataTxt/Data';
 //  A quick function convert all the time values to minutes, which is what we'll work with for the remainder of the app. I could've used a for loop to avoid the entry[0] repetition. Don't know what would've been better.
 //  If I were to use a for loop, I could make it much more multi-functional. Perhaps by spreading each entry [...entry] and calling a slice on that, using the index to replace the correct array entry.
 
-const timeConverter = (input, index) => {
+export const timeConverter = (input, index) => {
    return input.map(entry => [entry[0], entry[index].split(':')])
     .map(entry => [entry[0], entry[index].map(index => parseInt(index, 10))])
     .map(entry => [entry[0], entry[1][0]*60, entry[1][1]])
