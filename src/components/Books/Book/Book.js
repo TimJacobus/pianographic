@@ -1,6 +1,7 @@
 import React from 'react';
 
 import classes from './Book.module.css';
+
 import { timePerBook, piecesPerBook } from '../../../Data/DataVars/MusicVars';
 import { minutesToTimeConverter } from '../../../Data/DataVars/TimeByDayVars';
 
@@ -8,6 +9,7 @@ const book = (props) => {
   const composerDirAlt = `A picture of the composer ${props.composer}.`;
   const bookDirAlt = `A picture of the book ${props.book}`;
   
+  //  Note the dynamic paths to display the right images. require() must be used, and keeps the importing clean.
   return (
     <div className={classes.OuterDiv}>
       <h3>{props.book} by {props.composer}</h3>
@@ -19,9 +21,9 @@ const book = (props) => {
           <div className={classes.ComposerContainer}>
             <img src={require(`../../../assets/Composers/${props.composerDir}.jpg`)} alt={composerDirAlt}/>
           </div>
-          <p>Total time spent: {minutesToTimeConverter(timePerBook[props.bookDir])}</p>
-          <p>Total number of pieces learned: {piecesPerBook[props.bookDir]}</p>
-          <p>Average time per piece: {minutesToTimeConverter((timePerBook[props.bookDir]/piecesPerBook[props.bookDir]))}</p>
+          <p>Total time spent: {minutesToTimeConverter(timePerBook[props.bookDir])}.</p>
+          <p>Total number of pieces learned: {piecesPerBook[props.bookDir]}.</p>
+          <p>Average time per piece: {minutesToTimeConverter((timePerBook[props.bookDir]/piecesPerBook[props.bookDir]))}.</p>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@
 .YearBreakdown h2 {
   padding-top: 10px;
   color: RGB(22, 39, 86);
+  font-size: 1.65rem;
 }
 
 .YearSpecification {
@@ -23,6 +24,7 @@
 .YearSpecification h3 {
   padding: 10px;
   margin: 0;
+  font-size: 1.5rem;
 }
 
 .YearSpecification span {

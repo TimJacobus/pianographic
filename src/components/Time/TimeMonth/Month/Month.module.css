@@ -1,9 +1,8 @@
 .Outer {
-  min-width: 47%;
-  max-width: 49%;
+  min-width: 44%;
+  max-width: 44%;
   display: flex;
   flex-direction: column;
-
 }
 
 .Outer h2 {
@@ -12,11 +11,13 @@
   padding: 4px 0;
   border-radius: 8px;
   background-color: RGBA(229, 245, 163, 0.4);
+  box-shadow: 4px 4px 4px RGB(229, 245, 163, .25);
 }
 
 .MonthContainer {
   display: flex;
   margin-top: 5px;
+  justify-content: space-around;
 }
 
 .MonthContainer img {
@@ -29,9 +30,8 @@
 .InfoContainer {
   text-align: left;
   margin-left: 10px;
-  width: 305px;
   font-size: .95rem;
-  font-weight: 700;
+  font-weight: 600;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -42,6 +42,7 @@
 .InfoContainer p {
   margin: 0;
   color: RGB(6, 20, 57, 0.95);
+  font-size: 1.35rem;
 }
 
 

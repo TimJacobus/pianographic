@@ -1,8 +1,5 @@
 //                    ALL THE VARIABLES THAT HOLD OBJECTS CONVERTED FROM EXCEL WORKSHEETS
 
-//  I FIXED IT, I FINALLY FUCKING FIXED IT. WHOOHOOOOO.
-
-
 import monthBreakdownData from './monthbreakdown.json';
 import dailyInputData from './dailyinput.json';
 import musicData from './music.json';

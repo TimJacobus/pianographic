@@ -1,0 +1,42 @@
+.OuterDiv {
+  padding-top: 25px;
+  background-color: RGB(121, 134, 172, .35);
+}
+
+.OuterDiv h1 {
+  border-radius: 15px;
+  margin: 25px 11px 35px 11px;
+  background-color: RGB(121, 134, 172, .5);
+  padding: 15px 0;
+  box-shadow: 5px 5px 5px RGB(121, 134, 172, .2);
+}
+
+.InnerDiv span {
+  color: RGB(103, 123, 20);
+}
+
+.Explanation {
+  margin-bottom: 35px;
+}
+
+.Explanation h3 {
+  margin: 6px 0;
+  color: RGB(128, 41, 21);
+  font-size: 1.5rem;
+}
+
+.Specification {
+  margin-bottom: 40px;
+}
+
+.Specification h3 {
+  font-size: 1.5rem;
+}
+
+.ComposerFaces h2 {
+  border-radius: 15px;
+  margin: 25px 11px 35px 11px;
+  background-color: RGB(121, 134, 172, .3);
+  padding: 10px 0;
+  box-shadow: 5px 5px 5px RGB(121, 134, 172, .05);
+}

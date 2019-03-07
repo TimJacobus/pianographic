@@ -1,0 +1,17 @@
+.Footer {
+  height: 40px;
+  background-color: RGB(121, 134, 172, .5);
+  text-align: right;
+  font-size: .7rem;
+}
+
+.Text {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.Text p {
+  margin: 0 10px 3px 0;
+}

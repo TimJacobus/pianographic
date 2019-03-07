@@ -8,13 +8,18 @@
   margin: 25px 11px 35px 11px;
   padding: 10px 0;
   background-color: RGBA(255, 186, 170, 0.65);
+  box-shadow: 6px 6px 6px RGB(255, 186, 170, .4);
 }
 
 .BookCategory {
   background-color: RGBA(255, 186, 170, 0.35);
-  margin: 35px 13px 35px 13px;
+  margin: 35px 13px 45px 13px;
   padding: 1px 0;
   border-radius: 15px;
+}
+
+.BookCategory h4 {
+  font-size: 1.2rem;
 }
 
 .BookContainer {

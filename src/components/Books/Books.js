@@ -8,19 +8,25 @@ import { minutesToTimeConverter } from '../../Data/DataVars/TimeByDayVars';
 import { timeOnMusic } from '../../Data/DataVars/DayVars';
 
 const books = () => {
-
+  //  book takes two arguments and, depending on the arguments, displays the books that meet the requirements set by these arguments.
   const book = (minTime, maxTime) => {
+
+    //  minutes converts hh:mm to minutes, something for which I should really create a more generally applicable function.
     const minutes = musicObj.map(entry => entry[2].split(':')
       .map(entry => parseInt(entry, 10)))
       .map(entry => [entry[0] * 60, entry[1]])
       .map(entry => entry[0] + entry[1]);
 
+    //  turns musicObj into an array with a time value in minutes at [2]
     const musicMinutes = musicObj.map((entry, index) => [entry[0], entry[1], minutes[index], entry[3]]);
 
-    return musicMinutes.filter(entry => entry[3] > 2)
+    //  filter musicMinutes, the requirement being that [3] must store an entry greater than 1 (more than 1 piece learned, down from 2). It's then sorted, the lowest average per piece being first.
+    //  Lastly, we map this sorted array and only output entries based on minTime and maxTime. minTime is the floor for average time per piece, maxTime is the (non-inclusive) ceiling for average time per piece.
+    //  If it meets the requirements, an instance of Book is returned. It has a couple of dynamic props which are used to display the right composer picture, book picture, data, and composer name.
+    return musicMinutes.filter(entry => entry[3] > 1)
     .sort((a, b) => (a[2] / a[3]) - (b[2] / b[3]))
     .map(entry => (entry[2] / entry[3]) >= minTime && (entry[2] / entry[3]) < maxTime 
-      ? <Book composerDir={entry[0]} bookDir={entry[1]} composer={composerFullnameObj[entry[0]]} book={bookFullnameObj[entry[1]]}/>
+      ? <Book composerDir={entry[0]} bookDir={entry[1]} composer={composerFullnameObj[entry[0]]} book={bookFullnameObj[entry[1]]} key={entry[1]}/>
       : null);
   }
   
@@ -29,9 +35,9 @@ const books = () => {
       <h1>Books Breakdown</h1>
       <h2>Average time to learn a piece of music: {minutesToTimeConverter((timeOnMusic / totalAmountOfPieces))}.</h2>
       <br/>
-      <h3>Listed below is the time spent on initially learning from a book.</h3>
+      <h3>Listed below is a specification of the time spent initially learning pieces from each book.</h3>
       <h3>Further study of pieces to convert them to repertoire is not included.</h3>
-      <h3>Only books from which I've learned at least three pieces are included.</h3>
+      <h3>Only books from which I have learned at least two pieces are included.</h3>
       <div>
         <div className={classes.BookCategory}>
           <h2>Books With Up To 1 Hour / Piece Average</h2>
@@ -67,7 +73,7 @@ const books = () => {
         </div>
       </div>
     </div>
-  )
-};
+  );
+}
 
 export default books; 

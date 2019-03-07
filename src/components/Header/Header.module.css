@@ -1,7 +1,13 @@
 .Header {
   font-size: 1.25rem;
   background-color: RGB(121, 134, 172, .35);
-  border-top: 25px solid RGB(121, 134, 172, .00);
-  border-left: 25px solid RGB(121, 134, 172, .00);
-  border-right: 25px solid RGB(121, 134, 172, .00);
+  padding-top: 15px;
+}
+
+.Header h1 {
+  border-radius: 15px;
+  margin: 25px 11px 35px 11px;
+  background-color: RGB(121, 134, 172, .5);
+  padding: 15px 0;
+  box-shadow: 5px 5px 5px RGB(121, 134, 172, .1);
 }

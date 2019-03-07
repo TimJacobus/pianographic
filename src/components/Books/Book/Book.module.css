@@ -1,8 +1,9 @@
 .OuterDiv {
-  min-width: 47%;
-  max-width: 49%;
+  min-width: 33%;
+  max-width: 33%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
 .OuterDiv h3 {
@@ -10,6 +11,7 @@
   margin: 8px 0 10px 0;
   padding: 4px 0;
   border-radius: 8px;
+  box-shadow: 4px 4px 4px RGB(255, 186, 170, .1);
 }
 
 .InnerDiv {
@@ -23,6 +25,7 @@
   height: 280px;
   width: 200px;
   border-radius: 5px;
+  box-shadow: 10px 10px 10px RGB(255, 186, 170, .4);
 }
 
 .RightBlock {
@@ -32,7 +35,7 @@
 }
 
 .RightBlock p {
-  text-align: left;
+  text-align: center;
   font-weight: 700;
   font-size: 1.06rem;
   margin-bottom: 5px;
@@ -43,5 +46,6 @@
   width: 140px;
   border-radius: 100px;
   border: 5px solid RGBA(255, 186, 170, 0.25);
+  box-shadow: 5px 5px 5px RGB(255, 186, 170, .4);
 }
 
